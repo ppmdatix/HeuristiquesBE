@@ -1,0 +1,41 @@
+Algorithmes pour la décision en entreprise
+BE_1 Heuristiques
+2019
+École Centrale de Lyon – Algorithme pour la décision en entreprise – BE_1 1
+PESEUX Paul
+
+
+INTRODUCTION
+
+Lors de ce BE, nous mettons en pratique les connaissances théoriques acquises lors du cours d'Algorithme pour la décision en entreprise. Pour ce faire nous nous concentrons premièrement sur un problème combinatoire, le Voyageur de Commerce, donc discret. Ensuite nous nous intéressons à un problème d'optimisation continu.
+
+Pour ces deux problématiques, on utilise des heuristiques. Il s'agit de techniques basées sur l’intuition et/ou sur une reproduction des phénomènes observés dans le vivant. Observer la nature qui via le processus d'évolution a pu converger vers une solution adaptée est souvent une très bonne idée.
+
+On ne cherchera pas nécessairement la meilleure solution, mais une solution de bonne qualité pour un temps de calcul acceptable. En effet pour les problèmes combinatoires, comparer toutes les solutions (un nombre fini) et choisir l'optimale est totalement irréalisable.
+Ces méthodes s’appuient sur de l’exploration opportuniste de l’espace de des solutions autour de deux concepts : l’apprentissage et l’intensification. Une alternance entre ces deux phases est à la base des méthodes présentées ici.
+
+
+
+1. Le voyageur de commerce
+Dans une première partie on s’intéresse au Problème du Voyageur de commerce. Ce problème consiste à déterminer le parcours d'un ensemble de points de coût minimum.
+Si j'ai des cousins à Lille, Paris et Marseille, il est clair que je vais parcourir la France dans l'ordre précité, et non Lille, Marseille Paris.
+Cependant pour un nombre important de points, la solution est beaucoup moins triviale !
+En effet ce problème est un problème NP-Complet. Ainsi le nombre de cycles hamiltoniens croit de manière trop importante avec le nombre de points pour pouvoir utiliser des algorithmes qui parcourt en entier l'espace des solutions en des temps de calcul raisonnable.
+Prenons le cas de N villes. En supposant le point de départ fixé, on dispose donc de N-1 choix pour la première ville visitée. Ensuite il nous reste puis N-2 choix. Finalement on a (N-1) ! cycles hamiltoniens. Pour 50 villes, on arrive à temps de calcul de X Milliards d’années en prenant une microseconde comme temps de calcul pour un trajet ! D’où la nécessité d’utiliser des heuristiques qui permettent de ne pas tester toutes les solutions.
+
+1.1 Algorithme glouton
+La méthode la plus simple (après l'aléatoire) qui vient à l'esprit est de se déplacer de proche en proche.Ainsi l’algorithme du Glouton du plus proche voisin fonctionne de cette façon. Il s'agit une méthode constructiviste : on construit itérativement un chemin qui se termine en solution acceptable. En effet on se refuse de repasser par une même ville
+
+L’algorithme est donc le suivant :
+- Initialisation : Solution partielle S  = [point de départ]
+Liste tabou T=[]
+- Tant que toutes les villes n’ont pas été parcourues :
+• Intensification : Calcul des distances entre la ville actuelle s = S[-1] et toutes
+les villes n’appartenant pas à T
+• Diversification : s’ = min {d(s,s’) | s’∉ 𝑻 }
+• Déplacement en s’, S = S + [s']
+• Ajout de s’ à la liste tabou
+
+1.1.1 Cas des villes placées sur un cercle
+
+
