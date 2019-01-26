@@ -31,6 +31,23 @@ def generationProblemeCercle(n=10):
     return names, villes, matriceDistance
 
 
+def glouton(matriceDistance,names):
+    liste = [int(name) for name in names]
+    solutionConstruite = [0]
+    liste.remove(0)
+    while len(liste)>0:
+        u = solutionConstruite[-1]
+        v = liste[-1]
+        distance = float("inf")
+        for w in liste:
+            if matriceDistance[str(u)][str(w)] < distance:
+                distance = matriceDistance[str(u)][str(w)]
+                v = w
+        solutionConstruite.append(v)
+        liste.remove(v)
+    return solutionConstruite
+    
+
 def vizuResult(solution,villes):
     X = [villes[i][0] for i in villes]
     Y = [villes[i][1] for i in villes]

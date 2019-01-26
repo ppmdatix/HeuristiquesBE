@@ -27,15 +27,23 @@ Prenons le cas de N villes. En supposant le point de départ fixé, on dispose 
 La méthode la plus simple (après l'aléatoire) qui vient à l'esprit est de se déplacer de proche en proche.Ainsi l’algorithme du Glouton du plus proche voisin fonctionne de cette façon. Il s'agit une méthode constructiviste : on construit itérativement un chemin qui se termine en solution acceptable. En effet on se refuse de repasser par une même ville
 
 L’algorithme est donc le suivant :
-- Initialisation : Solution partielle S  = [point de départ]
-Liste tabou T=[]
-- Tant que toutes les villes n’ont pas été parcourues :
-• Intensification : Calcul des distances entre la ville actuelle s = S[-1] et toutes
-les villes n’appartenant pas à T
+
+\begin{itemize}[listparindent=\parindent]
+\item Initialisation : Solution partielle $S  = [\text{point de départ}]$
+ et Liste tabou $T=[]$
+
+ \item Tant que toutes les villes n’ont pas été parcourues :
+ - Intensification : Calcul des distances entre la ville actuelle $s = S[-1]$ et toutes les villes n’appartenant pas à $T$
+
+\end{itemize}
+• 
 • Diversification : s’ = min {d(s,s’) | s’∉ 𝑻 }
 • Déplacement en s’, S = S + [s']
 • Ajout de s’ à la liste tabou
 
 1.1.1 Cas des villes placées sur un cercle
+
+Ce cas a été impémenté sous \textit{Python}. Les villes sont réparties aléatoirement (on tire un $\theta$ uniformément sur $0, 2\pi$) sur un cercle de rayon $R$. On remarque que ce $R$ n'est pas important pour notre problème.
+Lorsque $n$ est grand le parcours devient optimal. En effet cette longueur tend vers $2\pi$
 
 
