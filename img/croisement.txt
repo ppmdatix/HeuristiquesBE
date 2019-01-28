@@ -1,0 +1,41 @@
+\documentclass[10pt]{article}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\begin{axis}[
+x=1cm,y=1cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=0,
+xmax=12.000000000000004,
+ymin=-4.70912220309811,
+ymax=12.784853700516356,
+xtick={0,2,...,12},
+ytick={-4,-2,...,12},]
+\clip(0,-4.70912220309811) rectangle (12,12.784853700516356);
+\draw [line width=2pt] (3,7) circle (1cm);
+\draw [line width=2pt] (9,7) circle (1cm);
+\draw [line width=2pt] (3,2) circle (1cm);
+\draw [line width=2pt] (9,2) circle (1cm);
+\draw [line width=2pt] (3,6)-- (9,3);
+\draw [line width=2pt] (9,3)-- (3,3);
+\draw [line width=2pt] (3,3)-- (9,6);
+\begin{scriptsize}
+\draw [fill=ududff] (3,7) circle (2.5pt);
+\draw[color=ududff] (3.160068846815836,7.445783132530122) node {$A$};
+\draw [fill=ududff] (9,7) circle (2.5pt);
+\draw[color=ududff] (9.170395869191054,7.445783132530122) node {$B$};
+\draw [fill=ududff] (3,2) circle (2.5pt);
+\draw[color=ududff] (3.160068846815836,2.447504302925988) node {$C$};
+\draw [fill=ududff] (9,2) circle (2.5pt);
+\draw[color=ududff] (9.170395869191054,2.447504302925988) node {$D$};
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+\end{document}
