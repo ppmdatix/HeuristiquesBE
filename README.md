@@ -1,3 +1,5 @@
+**WARNING:** YOU SHOULD READ THIS readme at https://hackmd.io/
+
 :::info 
 **Année:** 2019
 **Ecole:** École Centrale de Lyon 
