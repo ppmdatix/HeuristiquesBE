@@ -1,4 +1,4 @@
-**WARNING:** YOU SHOULD READ THIS readme at https://hackmd.io/
+**WARNING:** YOU SHOULD READ THIS readme with https://hackmd.io/
 
 :::info 
 **Année:** 2019
