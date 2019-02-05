@@ -40,6 +40,7 @@ L’algorithme est donc le suivant :
 
 ```python
 Input Solution=[point_de_depart], Tabou=[]
+================================
 while not Toutes les villes visitées
     Intensification : Calcul des distances entre la ville actuelle s = Solution[-1] et toutes les villes n’appartenant pas à Tabou
     
@@ -48,6 +49,8 @@ while not Toutes les villes visitées
     Déplacement en sbis, Solution = Solution + [sbis]
     Ajout de sbis à la liste Tabou
 end while
+================================
+Output Solution
 
 ```
 
@@ -163,11 +166,12 @@ Dans ce **BE**, plusieurs températures ont été testées, en fonction de l'it�
 - Linéare : $T = an +b$
 - Logarithmique : $T = \frac{1}{\log n}$
 - Géopmétrique : $T = \alpha^n$, avec $\alpha < 1$
+- Paliers exponentiels
 
 #### 1.2.3 Critère d'arrêt
 Le critère d'arrêt le plus simple est un nombre fixe d'itération. Cependant en utilisant un tel critère, nous ne nous assurons pas une convergence de notre algorithme. Ainsi plutot que de choisir un _niter_ trop grand, on peut calculer la _log_-progression à un pas fixé et arreter lorsque l'on ne progresse plus. Voici le  code.
 
-```pythpon
+```python
 def critere_arret(n,pas,log_seuil):
     if 0 == n%pas:
         return log_seuil < log(fonction(X[n-pas]) - fonction(X[n])) 
