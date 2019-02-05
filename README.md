@@ -19,6 +19,11 @@ On ne cherchera pas nécessairement la meilleure solution, mais une solution de 
 Ces méthodes s’appuient sur de l’exploration opportuniste de l’espace de des solutions autour de deux concepts : l’apprentissage et l’intensification. Une alternance entre ces deux phases est à la base des méthodes présentées ici.
 
 
+:::success
+**Tous** les résultats présentés ici ont été implémentés dans des _Notebook Python_ disponnibles dans ce [répertoire](https://github.com/ppmdatix/HeuristiquesBE) qui contient tout le travail réalisé pour ce **BE**
+:::
+
+
 
 # 1. Le voyageur de commerce
 Dans une première partie on s’intéresse au Problème du Voyageur de commerce. Ce problème consiste à déterminer le parcours d'un ensemble de points de coût minimum.
@@ -150,11 +155,25 @@ Output Solution
 ```
 
 #### 1.2.2 Condition d'acceptation
-Pour coller avec l'analogie mécanique, la condition d'acceptation dépend d'une température décroissante
+Pour coller avec l'analogie mécanique, la condition d'acceptation dépend d'une température décroissante. 
 
+
+
+Dans ce **BE**, plusieurs températures ont été testées, en fonction de l'itération $n$  :
+- Linéare : $T = an +b$
+- Logarithmique : $T = \frac{1}{\log n}$
+- Géopmétrique : $T = \alpha^n$, avec $\alpha < 1$
 
 #### 1.2.3 Critère d'arrêt
-Le critère d'arrêt le plus simple est un nombre fixe d'itération. Cependant en utilisant un tel critère, nous ne nous assurons pas une convergence de notre algorithme.
+Le critère d'arrêt le plus simple est un nombre fixe d'itération. Cependant en utilisant un tel critère, nous ne nous assurons pas une convergence de notre algorithme. Ainsi plutot que de choisir un _niter_ trop grand, on peut calculer la _log_-progression à un pas fixé et arreter lorsque l'on ne progresse plus. Voici le  code.
+
+```pythpon
+def critere_arret(n,pas,log_seuil):
+    if 0 == n%pas:
+        return log_seuil < log(fonction(X[n-pas]) - fonction(X[n])) 
+    else:
+        return False
+```
 
 
 # 2. Minimum d'une Fonction
